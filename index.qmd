@@ -1,0 +1,170 @@
+---
+title: "Quarto UKDRI<br>Theme"
+subtitle: "Inspired by the [R-Ladies theme](https://github.com/beatrizmilz/quarto-rladies-theme)"
+author: '<span style="color:white;">[Gabriel Mateus Bernardo Harrington](https://gmbernardoharrington.netlify.app/)</span>'
+date: "2022-10-29 (updated: `r Sys.Date()`)"
+institute: "Position<br>Lab Group"
+title-slide-attributes:
+  data-background-image: title_background.png
+  data-background-size: contain
+  presentation-heading-color: #FFFFFF
+format: 
+  ukdri-revealjs:
+    footer: "[UKDRI](https://ukdri.ac.uk/) theme for [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/index.html). Code available on [GitHub](https://github.com/H-Mateus/quarto-ukdri-theme)."
+embed-resources: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+# knitr::opts_chunk$set(echo = FALSE, message = FALSE,
+#                       fig.showtext = TRUE, fig.retina = 3, warning = FALSE)
+# options(knitr.kable.NA = '') #sets NAs in tables to be blank
+# options(knitr.table.format = "html")
+library(librarian)
+pkg <- c("tidyverse", "gt", "leaflet", "DT")
+shelf(pkg)
+rm(pkg)
+```
+
+```{r}
+#| label: dri-hexcolours
+#| include: false
+dri_hexcolours <- c("dark_blue" = "#00326e", "light_grey" = "#c4d1d9",
+                    "dark_grey" = "#415767", "sky_blue" = "#0ac8ff",
+                    "petrol_blue" = "007faf", "brigth_blue" = "4682ff",
+                    "cobalt" = "325ad7", "violet" = "#461e8c", "fuchsia" = "#fa2d6e",
+                    "ruby" = "#aa0050", "yellow" = "#ffed00")
+```
+
+## Example slide
+
+Here is some text.
+The font is Arial [(hex: #00326e)]{style="color:#00326e"}.
+Here is another sentence with **bold** and *italic* text.
+Here is an example reference: [@baker_polygenic_2020]
+
+::: {layout-ncol="2"}
+-   Here is a bullet point
+-   The font used is Arial and font size is 18px
+-   Bullets are coloured [hex: #0ac8ff]{style="color:#0ac8ff;"}
+
+![](images/UK%20Dementia%20Research%20Institute_LOGO_MONO.jpg){width="80%"}
+:::
+
+::: centered
+[![](images/UK%20DRI%20Founders_nostrapline_RGB.png){width="80%"}](https://ukdri.ac.uk/)
+:::
+
+## Inverted example slide {background-color="black" background-image="dri_logo_mono.jpg" background-size="17%" background-position="98% 98%"}
+
+Here is some text.
+The font is Arial [(hex: #00326e)]{style="color:#00326e"}.
+Here is another sentence with **bold** and *italic* text.
+Here is an example reference: [@baker_polygenic_2020]
+
+::: {layout-ncol="2"}
+-   Here is a bullet point
+-   The font used is Arial and font size is 18px
+-   Bullets are coloured [hex: #0ac8ff]{style="color:#0ac8ff;"}
+
+![](images/UK%20Dementia%20Research%20Institute_LOGO_MONO.jpg){width="80%"}
+:::
+
+::: centered
+[![](images/UK%20DRI%20Founders_nostrapline_RGB.png){width="80%"}](https://ukdri.ac.uk/)
+:::
+
+## Examples with R code: Plots
+
+```{r}
+#| output-location: column
+#| echo: true
+## make a plot
+ggplot(diamonds, aes(carat, price, colour = cut)) +
+    geom_point() +
+    theme_bw() +
+    scale_color_viridis_d()
+```
+
+## Examples with R code: Tables
+
+```{r}
+#| label: example-code-table
+#| echo: true
+## print table
+diamonds %>%
+  slice_sample(n = 10) %>%
+  gt() %>%
+  tab_header(title = md("**Table title**"), subtitle = md("A *subtitle*")) %>%
+  tab_source_note("Here is some source information")
+```
+
+## Examples with R code: HTML Widgets
+
+```{r}
+#| echo: true
+leaflet() %>% 
+  addTiles() %>% 
+  setView(-0.1371784166832623, 51.52405283300594, zoom = 17)
+```
+
+## Examples with R code: HTML Widgets 2
+
+```{r}
+#| label: example-code-widgets-dt
+#| echo: true
+DT::datatable(head(iris, 10), fillContainer = FALSE,
+              options = list(pageLength = 6))
+```
+
+## Example with R code: Math expressions
+
+You can write LaTeX math expressions inside a pair of dollar signs, e.g. `$\alpha+\beta$` renders $\alpha+\beta$.
+You can use the display style with double dollar signs:
+
+    $$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+
+$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+
+<!-- define the final slide  -->
+
+class: final-slide
+
+## Thanks for listening {.final-slide background-image="title_background.png" style="color: #0ac8ff;"}
+
+::: columns
+::: {.column width="20%"}
+![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+:::
+
+::: {.column width="20%"}
+![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+:::
+
+::: {.column width="20%"}
+![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+[[Collaborator institution]{style="color:white;"}<br> Name (Position/Role)<br> Name (Position/Role)<br> Name (Position/Role)<br>]{style="font-size:20px;"}
+:::
+
+::: {.column width="50%"}
+[[Collaborator institution]{style="color:white;"}<br> Name (Position/Role)<br> Name (Position/Role)<br> Name (Position/Role)<br>]{style="font-size:20px;"}
+:::
+:::
+
+<!--Use the following to add further logos to the title/final slide-->
+
+<!--Adjust sizing in the CSS file-->
+
+::: {.title-logo-1}
+:::
+
+::: {.title-logo-2}
+:::
+
+## References
