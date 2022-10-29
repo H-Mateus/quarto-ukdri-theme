@@ -12,7 +12,7 @@ The code to create this example is [available here](https://github.com/beatrizmi
 This [Quarto](https://quarto.org) extension can be installed using the following command:
 
 ``` bash
-quarto install extension beatrizmilz/quarto-rladies-theme
+quarto install extension H-Mateus/quarto-ukdri-theme
 ```
 
 If you are unable to install Quarto extensions, you probably should [update Quarto](https://quarto.org/docs/get-started/).
@@ -22,7 +22,7 @@ If you are unable to install Quarto extensions, you probably should [update Quar
 After you install the template, use the following code on terminal to create a new directory with all files needed:
 
 ``` bash
-quarto use template beatrizmilz/quarto-rladies-theme
+quarto use template H-Mateus/quarto-ukdri-theme
 ```
 
 ```bash
@@ -52,12 +52,4 @@ Files created:
 
 ## Acknowledgments
 
-- [Beatriz Milz](https://github.com/beatrizmilz) 
-
-- [Mickaël Canouil](https://github.com/mcanouil) - Helped to transform the presentation into a template, helped with improvements in the theme.
-
-- Inspired in the xaringan theme made by [Alison Hill](https://www.apreshill.com/)
-
-- [Quarto documentation](https://quarto.org/docs/extensions/formats.html)
-
-- [Martine Jansen](https://twitter.com/nnie_nl) - Martine's questions helped to improve the template content in order to make it easier for other people to use it!
+- This was forked from the [R-Ladies](https://github.com/beatrizmilz/quarto-rladies-theme) quarto theme
