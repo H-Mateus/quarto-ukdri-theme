@@ -1,0 +1,182 @@
+/*-- scss:defaults --*/
+// importing fonts
+//@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Lato&family=Yanone+Kaffeesatz&display=swap');
+
+// fonts
+$font-family-sans-serif: Helvetica, "Source Sans Pro", sans-serif !default;
+
+// colors
+//$body-bg: #333333 !default;
+$body-color: #00326e !default;
+//$link-color: $body-color !default;
+//
+//$code-bg: $body-color !default;
+//$code-color: $body-bg !default;
+//
+//$code-block-bg: $body-color !default;
+//$code-block-border-color: $body-color !default;
+
+// headings
+//$presentation-heading-font: 'Yanone Kaffeesatz',  Tahoma, sans-serif  !default;
+$presentation-heading-color: #00326e !default;
+$h1-font-size: 1.6em !default;
+$h2-font-size: 1.3em !default;
+$h3-font-size: 1.15em !default;
+
+/*-- scss:rules --*/
+
+#title-slide {
+  text-align: left;
+}
+
+#title-slide .institute, #title-slide .quarto-title-affiliation {
+  font-style: italic;
+  font-size: 80%;
+}
+
+#title-slide .author, #title-slide .quarto-title-author-name {
+  color: $body-color;
+}
+
+// this add a vertical line
+//#title-slide p.author::before, #title-slide div.quarto-title-author::before {
+//  content: "";
+//  display: block;
+//  border: none;
+//  background-color: $body-color;
+//  color: $body-color;
+//  height: 3px;
+//  margin-bottom: 1em;
+//}
+
+/* set horizontal line under header */
+//.reveal .slide h2::after {
+//    content:' ';
+//    display:block;
+//    border:2px solid #0ac8ff;
+//    border-radius:0px;
+//    -webkit-border-radius:4px;
+//    -moz-border-radius:4px;
+//    box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+//    -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+//    -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
+//}
+
+.reveal .slide h2::after {
+  content: "";
+  display: block;
+  border: none;
+  background-color: #0ac8ff;
+  color: #0ac8ff;
+  height: 3px;
+  margin-bottom: 1em;
+}
+
+//.reveal .slide h2 {
+//  font-size: 40px;
+//}
+
+#title-slide p, #title-slide a {
+  color: #0ac8ff;
+}
+
+#title-slide .title{
+  color: #FFFFFF;
+  text-align: left;
+  font-size: 50px;
+  margin: 0px;
+  position: relative;
+  //left: -60px;
+  top: -100px;
+  border: none;
+  border-radius: none;
+  box-shadow: none !important;
+}
+
+#title-slide .subtitle{
+  font-size: 40px;
+  position: relative;
+  //left: -60px;
+  top: -100px;
+  border: none;
+  border-radius: none;
+  box-shadow: none !important;
+}
+
+// increase logo size
+.reveal .slide-logo {
+  height: 80px !important;
+  //width: 100px!important;
+  max-width: unset !important;
+  max-height: unset !important;
+}
+
+.reveal .custom-box {
+    background-color: white;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.reveal .caption-box {
+    /* Make the caption a block so it occupies its own line. */
+    display: block;
+    font-size: 15px;
+}
+
+.reveal .profile-item {
+    /* To correctly align image, regardless of content height: */
+    vertical-align: top;
+    display: inline-block;
+    /* To horizontally center images and caption */
+    text-align: center;
+    /* The width of the container also implies margin around the images. */
+    width: 80px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.reveal .final-slide h2 {
+    color: #FFFFFF;
+}
+// remove horizonal line
+.reveal .final-slide h2:after {
+    border: none;
+}
+
+// change bullet point colour
+li {list-style: none;}
+
+li::before {
+    content: '\2022';
+    color: #0ac8ff;
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 0.5em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+.title-logo-1 {
+content: "";
+    position: absolute;
+    top: 872px;
+    right: 550px;
+    height: 280px;
+    width: 180px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(../logos/EPSRC+logo.png);
+}
+
+.title-logo-2 {
+content: "";
+    position: absolute;
+    top: 875px;
+    right: 420px;
+    height: 100px;
+    width: 320px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(https://www.r-project.org/logo/Rlogo.png);
+}

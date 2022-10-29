@@ -1,0 +1,16 @@
+title: UKDRI Presentation Template
+author: Gabriel Mateus Bernardo Harrington
+version: 0.0.1
+contributes:
+  formats: 
+    revealjs:
+      logo: dri_logo.jpg
+      footer: |
+        [UKDRI](https://ukdri.ac.uk/) theme for [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/index.html).
+        Code available on [GitHub](https://github.com/H-Mateus/quarto-ukdri-theme).
+      theme: ukdri.scss
+      slide-number: c/t
+      show-slide-number: all
+      title-slide-attributes:
+        data-background-color: "#562457"
+      preview-links: true
