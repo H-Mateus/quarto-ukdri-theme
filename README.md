@@ -1,11 +1,11 @@
-# Quarto R-Ladies Theme
+# Quarto UKDRI Theme
 
-This is a repository R-Ladies template using `Quarto` `reveal.js` :
+This is a repository UKDRI template using `Quarto` `reveal.js` :
 
-<a href='https://beatrizmilz.github.io/quarto-rladies-theme/' target='_blank'>
-<img src="giphy.gif" width="100%"/></a>
+<a href='https://github.com/H-Mateus/quarto-ukdri-theme/' target='_blank'>
+<img src="title_slide.png" width="100%"/></a>
 
-The code to create this example is [available here](https://github.com/beatrizmilz/quarto-rladies-theme/blob/main/template.qmd).
+The code to create this example is [available here](https://github.com/H-Mateus/quarto-ukdri-theme/blob/main/template.qmd).
 
 ## How to install
 
@@ -48,7 +48,6 @@ Files created:
  - talk.qmd
 
 ```
-
 
 ## Acknowledgments
 
