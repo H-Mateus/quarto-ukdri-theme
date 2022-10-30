@@ -1,9 +1,11 @@
 ---
-title: "Quarto UKDRI<br>Theme"
-subtitle: "Inspired by the [R-Ladies theme](https://github.com/beatrizmilz/quarto-rladies-theme)"
-author: '[Gabriel Mateus Bernardo Harrington](https://gmbernardoharrington.netlify.app/)'
-date: "2022-10-29 (updated: `r Sys.Date()`)"
-institute: "Research Associate | Williams Group"
+title: "Quarto UKDRI Theme"
+subtitle: 'Inspired by the <a href="https://github.com/beatrizmilz/quarto-rladies-theme" style="color: #fa2d6e">R-Ladies theme</a>'
+author: '<a href="https://gmbernardoharrington.netlify.app/" style="color: #fa2d6e">Gabriel Mateus Bernardo Harrington</a>'
+date: '2022-10-30'
+date-modified: '`r Sys.Date()`'
+date-format: iso
+institute: 'Research Associate | Williams Group'
 format: ukdri-revealjs
 embed-resources: true
 ---
