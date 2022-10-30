@@ -1,49 +1,69 @@
 ---
-title: "Quarto R-Ladies Theme"
-subtitle: "Inspired in the [xaringan theme](https://www.apreshill.com/slides/rladies-demo-slides.html) made by [Alison Hill](https://www.apreshill.com/) "
-author: "[Bea Milz](https://twitter.com/BeaMilz)"
-format: 
-  rladies-revealjs:
-    footer: "[R-Ladies](https://rladies.org/) theme for [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/index.html). Code available on [GitHub](https://github.com/beatrizmilz/quarto-rladies-theme)."
-incremental: false
+title: "Quarto UKDRI<br>Theme"
+subtitle: "Inspired by the [R-Ladies theme](https://github.com/beatrizmilz/quarto-rladies-theme)"
+author: '[Gabriel Mateus Bernardo Harrington](https://gmbernardoharrington.netlify.app/)'
+date: "2022-10-29 (updated: `r Sys.Date()`)"
+institute: "Research Associate | Williams Group"
+format: ukdri-revealjs
 embed-resources: true
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished presentation.
-To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
-
-> This is part of the [Quarto documentation](https://quarto.org/docs/presentations/).
-
-## Bullets
-
-When you click the **Render** button a document will be generated that includes:
-
--   Content authored with markdown
--   Output from executable code
-
-> This is part of the [Quarto documentation](https://quarto.org/docs/presentations/).
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code.
-You can embed code like this:
-
 ```{r}
-#| echo: true
-1 + 1
+#| label: setup
+#| include: false
+library(librarian)
+pkg <- c("tidyverse", "gt", "leaflet", "DT")
+shelf(pkg)
+rm(pkg)
 ```
 
-> This is part of the [Quarto documentation](https://quarto.org/docs/presentations/).
+```{r}
+#| label: dri-hexcolours
+#| include: false
+dri_hexcolours <- c("dark_blue" = "#00326e", "light_grey" = "#c4d1d9",
+                    "dark_grey" = "#415767", "sky_blue" = "#0ac8ff",
+                    "petrol_blue" = "007faf", "brigth_blue" = "4682ff",
+                    "cobalt" = "325ad7", "violet" = "#461e8c", "fuchsia" = "#fa2d6e",
+                    "ruby" = "#aa0050", "yellow" = "#ffed00")
+```
 
-You can also add `text marked as code`!
+## Example slide
 
-# New topic! {background-color="#562457"}
+Here is some text.
+The font is Arial [(hex: #00326e)]{style="color:#00326e"}.
+Here is another sentence with **bold** and *italic* text.
+Here is an example reference: [@baker_polygenic_2020]
 
-To make a slide like this, use:
+::: {layout-ncol="2"}
+-   Here is a bullet point
+-   The font used is Arial and font size is 18px
+-   Bullets are coloured [hex: #0ac8ff]{style="color:#0ac8ff;"}
 
-    # Title of slide {background-color="#562457"}
+![](https://ukdri.ac.uk/uploads/_facebook/Core_ukdri_logo_4_3.jpg){width="80%"}
+:::
+
+::: centered
+[![](https://ukdri.ac.uk/uploads/UK-DRI-in-numbers.jpg){width="40%"}](https://ukdri.ac.uk/)
+:::
+
+## Inverted example slide {background-color="black" background-image="dri_logo_mono.jpg" background-size="17%" background-position="98% 98%"}
+
+Here is some text.
+The font is Arial [(hex: #00326e)]{style="color:#00326e"}.
+Here is another sentence with **bold** and *italic* text.
+Here is an example reference: [@baker_polygenic_2020]
+
+::: {layout-ncol="2"}
+-   Here is a bullet point
+-   The font used is Arial and font size is 18px
+-   Bullets are coloured [hex: #0ac8ff]{style="color:#0ac8ff;"}
+
+![](https://ukdri.ac.uk/uploads/_facebook/Core_ukdri_logo_4_3.jpg){width="80%"}
+:::
+
+::: centered
+[![](https://ukdri.ac.uk/uploads/UK-DRI-in-numbers.jpg){width="40%"}](https://ukdri.ac.uk/)
+:::
 
 ## Tabset example
 
@@ -66,88 +86,82 @@ Hi!
 
 Use `. . .` to separate content as an incremental slide!
 
+## Examples with R code: Plots
 
-## You can add R code
+```{r}
+#| output-location: column
+#| echo: true
+## make a plot
+ggplot(diamonds, aes(carat, price, colour = cut)) +
+    geom_point() +
+    theme_bw() +
+    scale_color_viridis_d()
+```
+
+## Examples with R code: Tables
+
+```{r}
+#| label: example-code-table
+#| echo: true
+## print table
+diamonds %>%
+  slice_sample(n = 10) %>%
+  gt() %>%
+  tab_header(title = md("**Table title**"), subtitle = md("A *subtitle*")) %>%
+  tab_source_note("Here is some source information")
+```
+
+## Examples with R code: HTML Widgets
 
 ```{r}
 #| echo: true
-library(dplyr)
-library(ggplot2)
-g <- starwars |> 
-  ggplot() +
-  geom_point(aes(x = height, y = mass)) +
-  theme_light()
+leaflet() %>% 
+  addTiles() %>% 
+  setView(-0.1371784166832623, 51.52405283300594, zoom = 17)
 ```
 
-## And show the results aswell :)
+## Examples with R code: HTML Widgets 2
 
 ```{r}
-#| fig.align: center
+#| label: example-code-widgets-dt
 #| echo: true
-g 
+DT::datatable(head(iris, 10), fillContainer = FALSE,
+              options = list(pageLength = 6))
 ```
 
-## What about tables? {.smaller}
+## Example with R code: Math expressions
 
-### `knitr::kable()`
+You can write LaTeX math expressions inside a pair of dollar signs, e.g. `$\alpha+\beta$` renders $\alpha+\beta$.
+You can use the display style with double dollar signs:
 
-::: columns
-::: {.column width="50%"}
-```{r}
-#| label: kable-ex
-#| echo: true
-#| eval: false
-tab <- starwars |>
-  tidyr::drop_na(species) |> 
-  group_by(species) |>
-  summarise(
-    n = n(),
-    mean_heigth = round(mean(height, na.rm = TRUE)),
-    mean_mass = round(mean(mass, na.rm = TRUE))
-  ) |> 
-  slice_max(order_by = n, n = 4) 
+    $$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
 
-knitr::kable(tab)
-```
-:::
-
-::: {.column width="50%"}
-```{r}
-#| label: kable-ex
-#| eval: true
-```
-:::
-:::
-
-## `DT::datatable()` {.smaller}
-
-With the `smaller` class in the slide!
-Ex: `## slide name {.smaller}`
-
-```{r}
-DT::datatable(tab, options = list(pageLength = 5))
-```
-
-## `gt::gt()`
-
-```{r}
-gt::gt(tab)
-```
-
-## `reactable::reactable()`
-
-```{r}
-reactable::reactable(tab)
-```
+$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
 
 ## Diagrams with Mermaid!
 
 Read about how to create a diagram in this [post by Mine Çetinkaya-Rundel](https://mine-cetinkaya-rundel.github.io/quarto-tip-a-day/posts/21-diagrams/).
 
-<center>
-<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/quartotip?src=hash&amp;ref_src=twsrc%5Etfw">#quartotip</a> 21: Create diagrams in Quarto documents using Mermaid or Graphviz in executable code cells, similar to how you create figures.<br><br>Read more: <a href="https://t.co/3qx9oSNCay">https://t.co/3qx9oSNCay</a> <a href="https://t.co/fYzGcISl4h">pic.twitter.com/fYzGcISl4h</a></p>&mdash; Quarto (@quarto_pub) <a href="https://twitter.com/quarto_pub/status/1549271325943947270?ref_src=twsrc%5Etfw">July 19, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</center>
-
+```{mermaid}
+%%| label: fig-mermaid
+%%| fig-width: 6
+%%| fig-cap: |
+%%|   How Quarto orchestrates rendering of documents: start with 
+%%|   a qmd file, use the Knitr or Jupyter engine to perform the 
+%%|   computations and convert it to an md file, then use Pandoc 
+%%|   to convert to various file formats including HTML, PDF, 
+%%|   and Word.
+flowchart LR
+  A[qmd] --> B(Knitr)
+  A[qmd] --> C(Jupyter)
+  B(Knitr) --> D[md]
+  C(Jupyter) --> D[md]
+  D[md] --> E(pandoc)
+  E(pandoc) --> F(HTML)
+  E(pandoc) --> G(PDF)
+  E(pandoc) --> H(Word)
+  E(pandoc) --> I{and more}
+```
 
 ## Exporting into PDF
 
@@ -156,3 +170,45 @@ You can use the function `pagedown::chrome_print()` to print the HTML version in
 ```r
 pagedown::chrome_print("path-to-file.html")
 ```
+
+<!-- define the final slide  -->
+
+## Thanks for listening {.final-slide background-image="_extensions/ukdri/title_background.png" style="color: #0ac8ff;"}
+
+Replace `profile.png` with the path to the pictures you'd like to use.
+
+::: columns
+::: {.column width="20%"}
+![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+:::
+
+::: {.column width="20%"}
+![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+:::
+
+::: {.column width="20%"}
+![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+[[Collaborator institution]{style="color:white;"}<br> Name (Position/Role)<br> Name (Position/Role)<br> Name (Position/Role)<br>]{style="font-size:20px;"}
+:::
+
+::: {.column width="50%"}
+[[Collaborator institution]{style="color:white;"}<br> Name (Position/Role)<br> Name (Position/Role)<br> Name (Position/Role)<br>]{style="font-size:20px;"}
+:::
+:::
+
+<!--Use the following to add further logos to the title/final slide-->
+
+<!--Adjust sizing in the CSS file-->
+
+::: {.title-logo-1}
+:::
+
+::: {.title-logo-2}
+:::
+
+## References
