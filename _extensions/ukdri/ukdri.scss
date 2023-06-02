@@ -29,6 +29,10 @@ $presentation-heading-color: #00326e !default;
   text-align: left;
 }
 
+#title-slide .quarto-title-authors, #title-slide .quarto-title-block {
+  justify-content: unset;
+}
+
 #title-slide .institute, #title-slide .quarto-title-affiliation {
   font-style: italic;
   font-size: 80%;
