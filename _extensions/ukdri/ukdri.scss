@@ -29,6 +29,11 @@ $presentation-heading-color: #00326e !default;
   text-align: left;
 }
 
+#title-slide .quarto-title-authors, #title-slide .quarto-title-block {
+  justify-content: unset;
+  margin-left: -0.5em; /* Also needed for space (tweak if needed) */
+}
+
 #title-slide .institute, #title-slide .quarto-title-affiliation {
   font-style: italic;
   font-size: 80%;
@@ -50,15 +55,15 @@ $presentation-heading-color: #00326e !default;
 //}
 
 /* set horizontal line under header */
-.reveal .slide h2::after {
-  content: "";
-  display: block;
-  border: none;
-  background-color: #0ac8ff;
-  color: #0ac8ff;
-  height: 3px;
-  margin-bottom: 1em;
-}
+//.reveal .slide h2::after {
+//  content: "";
+//  display: block;
+//  border: none;
+//  background-color: #0ac8ff;
+//  color: #0ac8ff;
+//  height: 3px;
+//  margin-bottom: 1em;
+//}
 
 .reveal .slide h2 {
   font-size: 40px;

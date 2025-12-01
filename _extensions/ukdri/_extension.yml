@@ -6,15 +6,17 @@ contributes:
   formats:
     revealjs:
        theme: [default, ukdri.scss]
-       logo: dri_logo.jpg
+       #logo: logo-small.svg
        footer: |
          [UKDRI](https://ukdri.ac.uk/) theme for [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/index.html).
          Code available on [GitHub](https://github.com/H-Mateus/quarto-ukdri-theme).
        slide-number: c/t
        show-slide-number: all
+       background-image: main_slide_background.png
+       parallax-background-size: contain
        title-slide-attributes:
-          data-background-image: title_background.png
+          data-background-image: title_background2.png
           data-background-size: contain
           presentation-heading-color: #FFFFFF
        preview-links: true
-       bibliography: references.bib
+       bibliography: [references.bib, packages.bib]
