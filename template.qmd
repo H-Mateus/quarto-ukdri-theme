@@ -8,6 +8,8 @@ date-format: iso
 institute: 'Research Associate | Williams Group'
 format: ukdri-revealjs
 embed-resources: true
+nocite: |
+  @*
 ---
 
 ```{r}
@@ -16,17 +18,28 @@ embed-resources: true
 library(librarian)
 pkg <- c("tidyverse", "gt", "leaflet", "DT")
 shelf(pkg)
+
+# create a bib file of packages to cite them
+knitr::write_bib(pkg, "packages.bib")
 rm(pkg)
 ```
 
 ```{r}
 #| label: dri-hexcolours
 #| include: false
-dri_hexcolours <- c("dark_blue" = "#00326e", "light_grey" = "#c4d1d9",
-                    "dark_grey" = "#415767", "sky_blue" = "#0ac8ff",
-                    "petrol_blue" = "007faf", "brigth_blue" = "4682ff",
-                    "cobalt" = "325ad7", "violet" = "#461e8c", "fuchsia" = "#fa2d6e",
-                    "ruby" = "#aa0050", "yellow" = "#ffed00")
+dri_hexcolours <- c(
+  "dark_blue" = "#00326e",
+  "light_grey" = "#c4d1d9",
+  "dark_grey" = "#415767",
+  "sky_blue" = "#0ac8ff",
+  "petrol_blue" = "007faf",
+  "brigth_blue" = "4682ff",
+  "cobalt" = "325ad7",
+  "violet" = "#461e8c",
+  "fuchsia" = "#fa2d6e",
+  "ruby" = "#aa0050",
+  "yellow" = "#ffed00"
+)
 ```
 
 ## Example slide
@@ -95,9 +108,9 @@ Use `. . .` to separate content as an incremental slide!
 #| echo: true
 ## make a plot
 ggplot(diamonds, aes(carat, price, colour = cut)) +
-    geom_point() +
-    theme_bw() +
-    scale_color_viridis_d()
+  geom_point() +
+  theme_bw() +
+  scale_color_viridis_d()
 ```
 
 ## Examples with R code: Tables
@@ -117,8 +130,8 @@ diamonds %>%
 
 ```{r}
 #| echo: true
-leaflet() %>% 
-  addTiles() %>% 
+leaflet() %>%
+  addTiles() %>%
   setView(-0.1371784166832623, 51.52405283300594, zoom = 17)
 ```
 
@@ -127,8 +140,11 @@ leaflet() %>%
 ```{r}
 #| label: example-code-widgets-dt
 #| echo: true
-DT::datatable(head(iris, 10), fillContainer = FALSE,
-              options = list(pageLength = 6))
+DT::datatable(
+  head(iris, 10),
+  fillContainer = FALSE,
+  options = list(pageLength = 6)
+)
 ```
 
 ## Example with R code: Math expressions
@@ -175,21 +191,21 @@ pagedown::chrome_print("path-to-file.html")
 
 <!-- define the final slide  -->
 
-## Thanks for listening {.final-slide background-image="_extensions/ukdri/title_background.png" style="color: #0ac8ff;"}
+## Thanks for listening {.final-slide background-image="_extensions/H-Mateus/ukdri/final_slide.png"}
 
 Replace `profile.png` with the path to the pictures you'd like to use.
 
 ::: columns
 ::: {.column width="20%"}
-![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+![[Name Porsition/Role]{style="color:white;"}](_extensions/H-Mateus/ukdri/profile.avif){.profile-item .custom-box width="75%"}
 :::
 
 ::: {.column width="20%"}
-![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+![[Name Porsition/Role]{style="color:white;"}](_extensions/H-Mateus/ukdri/profile.avif){.profile-item .custom-box width="75%"}
 :::
 
 ::: {.column width="20%"}
-![[Name Porsition/Role]{style="color:white;"}](profile.png){.profile-item .custom-box width="75%"}
+![[Name Porsition/Role]{style="color:white;"}](_extensions/H-Mateus/ukdri/profile.avif){.profile-item .custom-box width="75%"}
 :::
 :::
 
@@ -213,4 +229,8 @@ Replace `profile.png` with the path to the pictures you'd like to use.
 ::: {.title-logo-2}
 :::
 
-## References
+![](_extensions/H-Mateus/ukdri/260330-162255.avif){.absolute top=20 right=0 width=30%}
+
+![](_extensions/H-Mateus/ukdri/260330-162358.avif){.absolute top=120 right=205 width=10%}
+
+## References {.scrollable}

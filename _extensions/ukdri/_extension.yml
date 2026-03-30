@@ -5,18 +5,33 @@ quarto-required: ">=1.2.0"
 contributes:
   formats:
     revealjs:
-       theme: [default, ukdri.scss]
-       #logo: logo-small.svg
-       footer: |
-         [UKDRI](https://ukdri.ac.uk/) theme for [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/index.html).
-         Code available on [GitHub](https://github.com/H-Mateus/quarto-ukdri-theme).
-       slide-number: c/t
-       show-slide-number: all
-       background-image: main_slide_background.png
-       parallax-background-size: contain
-       title-slide-attributes:
-          data-background-image: title_background2.png
-          data-background-size: contain
-          presentation-heading-color: #FFFFFF
-       preview-links: true
-       bibliography: [references.bib, packages.bib]
+      theme: [default, ukdri.scss]
+      logo: 260330-160018.avif
+      footer: |
+        [UKDRI](https://ukdri.ac.uk/) theme for [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/index.html).
+        Code available on [GitHub](https://github.com/H-Mateus/quarto-ukdri-theme).
+      slide-number: c/t
+      show-slide-number: all
+      title-slide-attributes:
+        data-background-image: title_background2.png
+        data-background-size: contain
+        presentation-heading-color: #FFFFFF
+      preview-links: true
+      include-in-header:
+        - text: |
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                Reveal.on('slidechanged', function(event) {
+                  var reveal = document.querySelector('.reveal');
+                  if (event.indexh === 0 && event.indexv === 0) {
+                    reveal.classList.add('on-title-slide');
+                  } else {
+                    reveal.classList.remove('on-title-slide');
+                  }
+                });
+                // Also handle initial load
+                var reveal = document.querySelector('.reveal');
+                reveal.classList.add('on-title-slide');
+              });
+            </script>
+      bibliography: [references.bib, packages.bib]
