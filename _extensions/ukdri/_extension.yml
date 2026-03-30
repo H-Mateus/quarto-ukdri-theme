@@ -34,4 +34,4 @@ contributes:
                 reveal.classList.add('on-title-slide');
               });
             </script>
-      bibliography: [references.bib, packages.bib]
+      bibliography: references.bib
